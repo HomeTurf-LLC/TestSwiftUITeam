@@ -1,0 +1,11 @@
+framework module HomeTurf {
+  umbrella header "HomeTurf.h"
+
+  export *
+  module * { export * }
+}
+
+module HomeTurf.Swift {
+    header "HomeTurf-Swift.h"
+    requires objc
+}
