@@ -14,8 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /// needs to be added to support orientation locking
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        print("orientation lock")
-        print(self.orientationLock)
         return self.orientationLock
     }
 

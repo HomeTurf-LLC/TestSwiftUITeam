@@ -63,6 +63,10 @@ Select your existing `Info.plist` in Xcode, Open as -> Source Code, and insert t
       <string>audio</string>
       <string>fetch</string>
     </array>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+	  <false/>
+    <key>UIRequiresFullScreen</key>
+    <true/>
 ```
 
 3. Add the following to `AppDelegate.swift` (note that the HomeTurf SDK may raise an error if the orientationLock variable is not available on the AppDelegate object):
