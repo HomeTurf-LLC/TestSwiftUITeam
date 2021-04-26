@@ -1,7 +1,7 @@
 # TestSwiftUITeam
 Test SwiftUI Team project using HomeTurf SDK
 
-## Swift Storyboard Setup
+## Setup
 
 See the [HomeTurfPodSpecs repo](https://github.com/HomeTurf-LLC/hometurfpodspecs) for project requirements and cocoapod setup instructions. The following instructions assume you have already added/updated a Podfile, run `pod install`, and opened your project with its `PROJECT_NAME.xcworkspace` file.
 
@@ -15,10 +15,14 @@ For convenience, the list of integration steps once the SDK has been installed i
 4. Add `TeamHomeTurfOrientationUtility` file that implements our HomeTurfBaseOrientationUtility protocol
 5. Update the ViewController that the app will launch from with a launch action
 6. (RECOMMENDED) Add Push Notification and Background Mode capabilities
-7. (OPTIONAL) If adding Auth0:
-   - Ensure that Podfile includes Auth0 dependency, and `pod install` again if needed
-   - Add Auth0Service that implements our BaseAuth0Service protocol (example provided)
-   - Update `HomeTurf.plist`, `Info.plist`, `AppDelegate` and view controller with additional required values
+
+(OPTIONAL) In addition to the above, if adding Auth0:
+1. Ensure that Podfile includes Auth0 dependency, and `pod install` again if needed
+2. Add Auth0Service that implements our BaseAuth0Service protocol (example provided)
+3. Update `HomeTurf.plist` with required Auth0 values
+4. Update `Info.plist` with required Auth0 URL values
+5. Update `AppDelegate` with required import and method
+6. Update ContentView to use `TeamHomeTurfAuth0Service`
 
 ### Project Configuration Steps
 
@@ -97,7 +101,7 @@ import HomeTurf
 
 (Other methods such as modal presentation as possible, but using a navigation view will provide the most immersive experience.)
 
-1. If not already, make sure the following are checked in Signing & Capabilities:
+6. If not already, make sure the following are checked in Signing & Capabilities:
 
 - Audio, Airplay and Picture in Picture
 - Background fetch
