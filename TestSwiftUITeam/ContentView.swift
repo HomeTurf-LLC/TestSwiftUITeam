@@ -15,7 +15,7 @@ struct ContentView: View {
                 VStack(spacing: 30) {
                     Text("Welcome")
 
-                    NavigationLink(destination: HomeTurfWebView.init(auth0Service: TeamHomeTurfAuth0Service.init())) {
+                    NavigationLink(destination: HomeTurfWebView.init(auth0Service: TeamHomeTurfAuth0Service.init(), orientationUtility: TeamHomeTurfOrientationUtility.init())) {
                         Text("Go to HomeTurf")
                     }
                 }

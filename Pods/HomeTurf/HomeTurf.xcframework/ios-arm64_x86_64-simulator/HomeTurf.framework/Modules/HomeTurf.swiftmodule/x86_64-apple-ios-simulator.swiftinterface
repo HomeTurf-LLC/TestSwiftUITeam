@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
-// swift-module-flags: -target x86_64-apple-ios14.4-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name HomeTurf
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name HomeTurf
 import AVFoundation
 import AudioUnit
 import Foundation
@@ -23,6 +23,8 @@ final public class HomeTurfWebView : SwiftUI.UIViewControllerRepresentable {
   }
   public init()
   public init(auth0Service: HomeTurf.HomeTurfBaseAuth0Service)
+  public init(orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
+  public init(auth0Service: HomeTurf.HomeTurfBaseAuth0Service, orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
   final public func dismiss()
   final public func makeUIViewController(context: HomeTurf.HomeTurfWebView.Context) -> HomeTurf.HomeTurfWebViewController
   final public func updateUIViewController(_ uiViewController: HomeTurf.HomeTurfWebViewController, context: HomeTurf.HomeTurfWebView.Context)
@@ -30,6 +32,10 @@ final public class HomeTurfWebView : SwiftUI.UIViewControllerRepresentable {
   public typealias UIViewControllerType = HomeTurf.HomeTurfWebViewController
   public typealias Coordinator = Swift.Void
   public typealias Body = Swift.Never
+}
+@objc public protocol HomeTurfBaseOrientationUtility {
+  @objc func lockOrientation(_ orientation: UIKit.UIInterfaceOrientationMask)
+  @objc func lockOrientation(_ orientation: UIKit.UIInterfaceOrientationMask, andRotateTo rotateOrientation: UIKit.UIInterfaceOrientation)
 }
 @objc public protocol HomeTurfBaseAuth0Service {
   @objc init()
@@ -39,11 +45,13 @@ final public class HomeTurfWebView : SwiftUI.UIViewControllerRepresentable {
   @objc func logout()
 }
 @objc @_inheritsConvenienceInitializers public class HomeTurfWebViewController : UIKit.UIViewController, UIKit.UIImagePickerControllerDelegate, UIKit.UINavigationControllerDelegate, WebKit.WKScriptMessageHandler, WebKit.WKUIDelegate {
+  public var orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility?
   public var auth0Service: HomeTurf.HomeTurfBaseAuth0Service?
   public var popView: (() -> ())?
   @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc public func setAuth0Service(auth0Service: HomeTurf.HomeTurfBaseAuth0Service)
+  public func setAuth0Service(auth0Service: HomeTurf.HomeTurfBaseAuth0Service)
+  @objc public func setOrientationUtility(orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
   @objc override dynamic open var shouldAutorotate: Swift.Bool {
     @objc get
   }

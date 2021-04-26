@@ -220,6 +220,13 @@ SWIFT_PROTOCOL("_TtP8HomeTurf24HomeTurfBaseAuth0Service_")
 @end
 
 
+SWIFT_PROTOCOL("_TtP8HomeTurf30HomeTurfBaseOrientationUtility_")
+@protocol HomeTurfBaseOrientationUtility
+- (void)lockOrientation:(UIInterfaceOrientationMask)orientation;
+- (void)lockOrientation:(UIInterfaceOrientationMask)orientation andRotateTo:(UIInterfaceOrientation)rotateOrientation;
+@end
+
+
 SWIFT_CLASS("_TtC8HomeTurf25HomeTurfJavascriptService")
 @interface HomeTurfJavascriptService : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -234,7 +241,7 @@ SWIFT_CLASS("_TtC8HomeTurf25HomeTurfWebViewController")
 @interface HomeTurfWebViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, WKScriptMessageHandler, WKUIDelegate>
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)setAuth0ServiceWithAuth0Service:(id <HomeTurfBaseAuth0Service> _Nonnull)auth0Service;
+- (void)setOrientationUtilityWithOrientationUtility:(id <HomeTurfBaseOrientationUtility> _Nonnull)orientationUtility;
 @property (nonatomic, readonly) BOOL shouldAutorotate;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidAppear:(BOOL)animated;

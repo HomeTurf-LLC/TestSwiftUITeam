@@ -15,6 +15,7 @@
 		1F45910E262A2F190042ED9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F45910C262A2F190042ED9A /* LaunchScreen.storyboard */; };
 		1F45911D262A2F930042ED9A /* HomeTurf.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F45911C262A2F930042ED9A /* HomeTurf.plist */; };
 		1F459120262A2FD50042ED9A /* TeamHomeTurfAuth0Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F45911F262A2FD50042ED9A /* TeamHomeTurfAuth0Service.swift */; };
+		1F79B67F263759C10000A517 /* TeamHomeTurfOrientationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79B67E263759C10000A517 /* TeamHomeTurfOrientationUtility.swift */; };
 		875F559872DC5DF31283F713 /* Pods_TestSwiftUITeam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74A04F9DB0E9E3D4350C60DA /* Pods_TestSwiftUITeam.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		1F45910F262A2F190042ED9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F45911C262A2F930042ED9A /* HomeTurf.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HomeTurf.plist; sourceTree = "<group>"; };
 		1F45911F262A2FD50042ED9A /* TeamHomeTurfAuth0Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamHomeTurfAuth0Service.swift; sourceTree = "<group>"; };
+		1F79B67E263759C10000A517 /* TeamHomeTurfOrientationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamHomeTurfOrientationUtility.swift; sourceTree = "<group>"; };
 		52CBFC442FEB2350F3A509A5 /* Pods-TestSwiftUITeam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSwiftUITeam.release.xcconfig"; path = "Target Support Files/Pods-TestSwiftUITeam/Pods-TestSwiftUITeam.release.xcconfig"; sourceTree = "<group>"; };
 		74A04F9DB0E9E3D4350C60DA /* Pods_TestSwiftUITeam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestSwiftUITeam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F36BE41AE57ED3AD7E2B9206 /* Pods-TestSwiftUITeam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSwiftUITeam.debug.xcconfig"; path = "Target Support Files/Pods-TestSwiftUITeam/Pods-TestSwiftUITeam.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		1F459100262A2F160042ED9A /* TestSwiftUITeam */ = {
 			isa = PBXGroup;
 			children = (
+				1F79B67B263759970000A517 /* HomeTurfSupport */,
 				1F459101262A2F160042ED9A /* AppDelegate.swift */,
 				1F459103262A2F160042ED9A /* SceneDelegate.swift */,
 				1F459105262A2F160042ED9A /* ContentView.swift */,
@@ -84,7 +87,6 @@
 				1F45910F262A2F190042ED9A /* Info.plist */,
 				1F459109262A2F190042ED9A /* Preview Content */,
 				1F45911C262A2F930042ED9A /* HomeTurf.plist */,
-				1F45911F262A2FD50042ED9A /* TeamHomeTurfAuth0Service.swift */,
 			);
 			path = TestSwiftUITeam;
 			sourceTree = "<group>";
@@ -95,6 +97,15 @@
 				1F45910A262A2F190042ED9A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1F79B67B263759970000A517 /* HomeTurfSupport */ = {
+			isa = PBXGroup;
+			children = (
+				1F45911F262A2FD50042ED9A /* TeamHomeTurfAuth0Service.swift */,
+				1F79B67E263759C10000A517 /* TeamHomeTurfOrientationUtility.swift */,
+			);
+			path = HomeTurfSupport;
 			sourceTree = "<group>";
 		};
 		4F40E0968D4E0D5612214E61 /* Frameworks */ = {
@@ -222,6 +233,7 @@
 			files = (
 				1F459102262A2F160042ED9A /* AppDelegate.swift in Sources */,
 				1F459120262A2FD50042ED9A /* TeamHomeTurfAuth0Service.swift in Sources */,
+				1F79B67F263759C10000A517 /* TeamHomeTurfOrientationUtility.swift in Sources */,
 				1F459104262A2F160042ED9A /* SceneDelegate.swift in Sources */,
 				1F459106262A2F160042ED9A /* ContentView.swift in Sources */,
 			);
