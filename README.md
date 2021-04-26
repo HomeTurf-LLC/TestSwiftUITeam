@@ -12,9 +12,10 @@ For convenience, the list of integration steps once the SDK has been installed i
 1. Add `HomeTurf.plist` (structure below - specific values will be provided by HomeTurf)
 2. Update `Info.plist` with required values below
 3. Update `AppDelegate` for orientation locking support
-4. Update the ViewController that the app will launch from with a launch action
-5. (RECOMMENDED) Add Push Notification and Background Mode capabilities
-6. (OPTIONAL) If adding Auth0:
+4. Add `TeamHomeTurfOrientationUtility` file that implements our HomeTurfBaseOrientationUtility protocol
+5. Update the ViewController that the app will launch from with a launch action
+6. (RECOMMENDED) Add Push Notification and Background Mode capabilities
+7. (OPTIONAL) If adding Auth0:
    - Ensure that Podfile includes Auth0 dependency, and `pod install` again if needed
    - Add Auth0Service that implements our BaseAuth0Service protocol (example provided)
    - Update `HomeTurf.plist`, `Info.plist`, `AppDelegate` and view controller with additional required values
@@ -71,7 +72,9 @@ Select your existing `Info.plist` in Xcode, Open as -> Source Code, and insert t
     }
 ```
 
-1. Add something like the following to the SwiftUI View where HomeTurf will be started from. Ultimately the `HomeTurfWebView` (as a UIViewControllerRepresentable instance) will start up the WebViewController in a navigation stack with this approach:
+4. Add a `TeamHomeTurfOrientationUtility.swift` file to your project (and target membership), which you can copy from the HomeTurfSupport directory in our demo project [here](./TestSwiftUITeam/HomeTurfSupport/TeamHomeTurfOrientationUtility.swift).
+
+5. Add something like the following to the SwiftUI View where HomeTurf will be started from. Ultimately the `HomeTurfWebView` (as a UIViewControllerRepresentable instance) will start up the WebViewController in a navigation stack with this approach:
 
 ```
 import SwiftUI
@@ -83,7 +86,7 @@ import HomeTurf
       ...
       VStack(spacing: 30) {
         ...
-        NavigationLink(destination: HomeTurfWebView()) {
+        NavigationLink(destination: HomeTurfWebView(orientationUtility: TeamHomeTurfOrientationUtility.init())) {
             Text("Go to HomeTurf")
         }
       }
