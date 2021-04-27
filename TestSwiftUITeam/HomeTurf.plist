@@ -7,7 +7,7 @@
 	<key>HomeTurfTeamId</key>
 	<string>441766b9-0f24-11e2-8525-18a905767e44</string>
 	<key>HomeTurfUseNativeAuth0</key>
-	<false/>
+	<true/>
 	<key>HomeTurfAuth0Domain</key>
 	<string>dev-p428fe5m.us.auth0.com</string>
 	<key>HomeTurfAuth0ClientId</key>

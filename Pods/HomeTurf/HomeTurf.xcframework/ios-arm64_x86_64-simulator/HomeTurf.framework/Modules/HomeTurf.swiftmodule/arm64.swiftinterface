@@ -17,18 +17,14 @@ import WebKit
   @objc deinit
   @objc override dynamic public init()
 }
-final public class HomeTurfWebView : SwiftUI.UIViewControllerRepresentable {
-  @SwiftUI.Environment final public var presentationMode: SwiftUI.Binding<SwiftUI.PresentationMode> {
-    get
-  }
+public struct HomeTurfWebView : SwiftUI.UIViewControllerRepresentable {
   public init()
   public init(auth0Service: HomeTurf.HomeTurfBaseAuth0Service)
   public init(orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
   public init(auth0Service: HomeTurf.HomeTurfBaseAuth0Service, orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
-  final public func dismiss()
-  final public func makeUIViewController(context: HomeTurf.HomeTurfWebView.Context) -> HomeTurf.HomeTurfWebViewController
-  final public func updateUIViewController(_ uiViewController: HomeTurf.HomeTurfWebViewController, context: HomeTurf.HomeTurfWebView.Context)
-  @objc deinit
+  public func dismiss()
+  public func makeUIViewController(context: HomeTurf.HomeTurfWebView.Context) -> HomeTurf.HomeTurfWebViewController
+  public func updateUIViewController(_ uiViewController: HomeTurf.HomeTurfWebViewController, context: HomeTurf.HomeTurfWebView.Context)
   public typealias UIViewControllerType = HomeTurf.HomeTurfWebViewController
   public typealias Coordinator = Swift.Void
   public typealias Body = Swift.Never
@@ -38,7 +34,6 @@ final public class HomeTurfWebView : SwiftUI.UIViewControllerRepresentable {
   @objc func lockOrientation(_ orientation: UIKit.UIInterfaceOrientationMask, andRotateTo rotateOrientation: UIKit.UIInterfaceOrientation)
 }
 @objc public protocol HomeTurfBaseAuth0Service {
-  @objc init()
   @objc func setCredentials(audience: Swift.String, clientId: Swift.String, domain: Swift.String)
   @objc func setJavascriptService(javascriptService: HomeTurf.HomeTurfJavascriptService)
   @objc func login()

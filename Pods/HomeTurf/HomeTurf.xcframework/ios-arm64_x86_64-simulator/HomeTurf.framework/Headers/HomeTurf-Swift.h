@@ -214,7 +214,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 SWIFT_PROTOCOL("_TtP8HomeTurf24HomeTurfBaseAuth0Service_")
 @protocol HomeTurfBaseAuth0Service
-- (nonnull instancetype)init;
 - (void)setCredentialsWithAudience:(NSString * _Nonnull)audience clientId:(NSString * _Nonnull)clientId domain:(NSString * _Nonnull)domain;
 - (void)setJavascriptServiceWithJavascriptService:(HomeTurfJavascriptService * _Nonnull)javascriptService;
 - (void)login;
@@ -475,7 +474,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 SWIFT_PROTOCOL("_TtP8HomeTurf24HomeTurfBaseAuth0Service_")
 @protocol HomeTurfBaseAuth0Service
-- (nonnull instancetype)init;
 - (void)setCredentialsWithAudience:(NSString * _Nonnull)audience clientId:(NSString * _Nonnull)clientId domain:(NSString * _Nonnull)domain;
 - (void)setJavascriptServiceWithJavascriptService:(HomeTurfJavascriptService * _Nonnull)javascriptService;
 - (void)login;
