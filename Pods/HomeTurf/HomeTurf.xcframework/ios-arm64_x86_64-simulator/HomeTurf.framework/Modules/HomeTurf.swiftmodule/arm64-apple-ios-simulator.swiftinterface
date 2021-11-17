@@ -1,60 +1,79 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
 // swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name HomeTurf
 import AVFoundation
 import AudioUnit
+import CoreLocation
 import Foundation
 @_exported import HomeTurf
+import MapKit
 import Swift
 import SwiftUI
 import UIKit
 import UserNotifications
 import WebKit
+import _Concurrency
 @_inheritsConvenienceInitializers @objc final public class HomeTurfJavascriptService : ObjectiveC.NSObject {
   final public func setWKWebView(wkWebView: WebKit.WKWebView)
   final public func runJavascriptInWebView(action: Swift.String)
   final public func runJavascriptInWebView(action: Swift.String, data: Swift.String, sendDataAsString: Swift.Bool)
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
-public struct HomeTurfWebView : SwiftUI.UIViewControllerRepresentable {
-  public init()
-  public init(auth0Service: HomeTurf.HomeTurfBaseAuth0Service)
-  public init(orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
-  public init(auth0Service: HomeTurf.HomeTurfBaseAuth0Service, orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
-  public func dismiss()
-  public func makeUIViewController(context: HomeTurf.HomeTurfWebView.Context) -> HomeTurf.HomeTurfWebViewController
-  public func updateUIViewController(_ uiViewController: HomeTurf.HomeTurfWebViewController, context: HomeTurf.HomeTurfWebView.Context)
-  public typealias UIViewControllerType = HomeTurf.HomeTurfWebViewController
-  public typealias Coordinator = Swift.Void
+@_Concurrency.MainActor(unsafe) public struct HomeTurfWebView : SwiftUI.UIViewControllerRepresentable {
+  @_Concurrency.MainActor(unsafe) public init()
+  @_Concurrency.MainActor(unsafe) public init(auth0Service: HomeTurf.HomeTurfBaseAuth0Service)
+  @_Concurrency.MainActor(unsafe) public init(auth0Service: HomeTurf.HomeTurfBaseAuth0Service, changeBackgroundColorUtility: HomeTurf.HomeTurfBaseSwiftUIBackgroundChangeUtility)
+  @_Concurrency.MainActor(unsafe) public init(orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
+  @_Concurrency.MainActor(unsafe) public init(changeBackgroundColorUtility: HomeTurf.HomeTurfBaseSwiftUIBackgroundChangeUtility, orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
+  @_Concurrency.MainActor(unsafe) public init(auth0Service: HomeTurf.HomeTurfBaseAuth0Service, orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
+  @_Concurrency.MainActor(unsafe) public init(auth0Service: HomeTurf.HomeTurfBaseAuth0Service, changeBackgroundColorUtility: HomeTurf.HomeTurfBaseSwiftUIBackgroundChangeUtility, orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
+  @_Concurrency.MainActor(unsafe) public func dismiss()
+  @_Concurrency.MainActor(unsafe) public func makeUIViewController(context: HomeTurf.HomeTurfWebView.Context) -> HomeTurf.HomeTurfWebViewController
+  @_Concurrency.MainActor(unsafe) public func updateUIViewController(_ uiViewController: HomeTurf.HomeTurfWebViewController, context: HomeTurf.HomeTurfWebView.Context)
   public typealias Body = Swift.Never
+  public typealias Coordinator = Swift.Void
+  public typealias UIViewControllerType = HomeTurf.HomeTurfWebViewController
 }
 @objc public protocol HomeTurfBaseOrientationUtility {
   @objc func lockOrientation(_ orientation: UIKit.UIInterfaceOrientationMask)
   @objc func lockOrientation(_ orientation: UIKit.UIInterfaceOrientationMask, andRotateTo rotateOrientation: UIKit.UIInterfaceOrientation)
 }
-@objc public protocol HomeTurfBaseAuth0Service {
-  @objc func setCredentials(audience: Swift.String, clientId: Swift.String, domain: Swift.String)
-  @objc func setJavascriptService(javascriptService: HomeTurf.HomeTurfJavascriptService)
-  @objc func login()
-  @objc func logout()
+public protocol HomeTurfBaseSwiftUIBackgroundChangeUtility {
+  func changeBackgroundColor(_ color: UIKit.UIColor)
 }
-@objc @_inheritsConvenienceInitializers public class HomeTurfWebViewController : UIKit.UIViewController, UIKit.UIImagePickerControllerDelegate, UIKit.UINavigationControllerDelegate, WebKit.WKScriptMessageHandler, WebKit.WKUIDelegate {
-  public var orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility?
-  public var auth0Service: HomeTurf.HomeTurfBaseAuth0Service?
-  public var popView: (() -> ())?
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  public func setAuth0Service(auth0Service: HomeTurf.HomeTurfBaseAuth0Service)
-  @objc public func setOrientationUtility(orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
-  @objc override dynamic open var shouldAutorotate: Swift.Bool {
-    @objc get
+public protocol HomeTurfBaseAuth0Service {
+  func setCredentials(audience: Swift.String, clientId: Swift.String, domain: Swift.String)
+  func setJavascriptService(javascriptService: HomeTurf.HomeTurfJavascriptService)
+  func login()
+  func logout()
+}
+extension UIKit.UINavigationController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @_Concurrency.MainActor(unsafe) @objc get
   }
-  @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
-  @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
-  @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
-  @objc override dynamic public func viewDidLoad()
-  @objc override dynamic public func viewDidLayoutSubviews()
-  @objc public func userContentController(_ userContentController: WebKit.WKUserContentController, didReceive message: WebKit.WKScriptMessage)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class HomeTurfWebViewController : UIKit.UIViewController, UIKit.UIImagePickerControllerDelegate, UIKit.UINavigationControllerDelegate, WebKit.WKScriptMessageHandler, WebKit.WKUIDelegate {
+  @_Concurrency.MainActor(unsafe) public var swiftUIChangeBackgroundColorUtility: HomeTurf.HomeTurfBaseSwiftUIBackgroundChangeUtility?
+  @_Concurrency.MainActor(unsafe) public var orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility?
+  @_Concurrency.MainActor(unsafe) public var auth0Service: HomeTurf.HomeTurfBaseAuth0Service?
+  @_Concurrency.MainActor(unsafe) public var popView: (() -> ())?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) public func setAuth0Service(auth0Service: HomeTurf.HomeTurfBaseAuth0Service)
+  @_Concurrency.MainActor(unsafe) public func setSwiftUIChangeBackgroundColorUtility(changeBackgroundColorUtility: HomeTurf.HomeTurfBaseSwiftUIBackgroundChangeUtility)
+  @objc @_Concurrency.MainActor(unsafe) public func setOrientationUtility(orientationUtility: HomeTurf.HomeTurfBaseOrientationUtility)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var shouldAutorotate: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc public func userContentController(_ userContentController: WebKit.WKUserContentController, didReceive message: WebKit.WKScriptMessage)
   @objc deinit
 }
